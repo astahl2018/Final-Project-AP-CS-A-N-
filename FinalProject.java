@@ -2,9 +2,10 @@ import java.awt.*;
 import java.util.*;
 
 //do not modify
-public class FinalProject {
+public class FinalProject{
 	  private FinalProjectDisplay display;
 	  private int count = 0;
+	  private int situation = 0;
 	  
 	public static void main(String[] args) {
 	    FinalProject lab = new FinalProject(200, 200);
@@ -16,6 +17,7 @@ public class FinalProject {
 	    display = new FinalProjectDisplay("Final Project", numRows, numCols);
 	  }
 	
+	
 	public void updateDisplay() {
 		
 	  }
@@ -26,14 +28,9 @@ public class FinalProject {
 	
 	public void run() {
 		//runs the program
-	  while (true) {
-	    for (int i = 0; i < display.getSpeed(); i++) {
-	      step();
-	    }
-	    
-	    updateDisplay();
-	    display.repaint();
+	  for (int i = 0; i < 10; i++) {
+		  display.repaint();
+		  display.pause(1);
 	  }
-	}
-	
+	}	
 }
