@@ -12,6 +12,10 @@ public class FinalProjectDisplay extends JComponent implements ActionListener{
 	private JSlider slider;
 	private int speed;
 	private JTextField textIn;
+	private ArrayList<Question> questions = new ArrayList<Question>();
+	private int count = 0;
+	private String response;
+	private JLabel l;
 
 
 public FinalProjectDisplay(String title, int numRows, int numCols) {
@@ -21,20 +25,40 @@ public FinalProjectDisplay(String title, int numRows, int numCols) {
 	textIn = new JTextField("response: ");
 	textIn.addActionListener(this);
 	JPanel p = new JPanel();
-	p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
+	l = new JLabel("andrew");
+	//p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
+	
+	p.setPreferredSize(new Dimension(500, 500));
+	frame.add(p);
+	p.add(l);
 	p.add(textIn);
-	frame.add(textIn);
-	frame.add(this);
+	textIn.setSize(new Dimension(250, 250));
+	
+	
 	frame.pack(); 
 	frame.setVisible(true);
+	
+	String[] qArr = {"Why did Andrew lose the question in science bowl" , "How does Nico decide what answer to go with in scienc bowl?"};
+	String[] aArr = {"He was stalling" , "He just rolls a dice"};
+	
+	for(int i = 0; i < qArr.length; i++){
+		questions.add(new Question(qArr[i] , aArr[i]));
+	}
 }
 	public void actionPerformed(ActionEvent e) {
-		String response = textIn.getText();
-		System.out.println(e);
+		response = textIn.getText();
+		System.out.println("response: " + response);
+		if (questions.get(count).checkResponse(response)) {
+			System.out.println("correct");
+		}
+		else {
+			System.out.println("incorrect");
+			l.setText("wrong");
+		}
 	}
 
 	public void paintComponent(Graphics g) {
-		g.drawString("Andrew", 250, 250);
+
 	}
 	
 	public void pause(int milliseconds) {
