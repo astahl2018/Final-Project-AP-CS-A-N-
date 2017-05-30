@@ -1,3 +1,6 @@
+//Andrew and Nico
+//AP CS Final Project
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
